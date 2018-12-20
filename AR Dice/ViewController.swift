@@ -20,32 +20,38 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Cube
-        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
+        // Shapes
+        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+        let sphere = SCNSphere(radius: 0.2)
         // Red
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.red
         cube.materials = [material]
+        sphere.materials = [material]
         
         // Node; Position
-        let node = SCNNode()
-        node.position = SCNVector3(0, 0.1, -0.5) // in meters, so 0.1 = 10cm
-        node.geometry = cube
+        let cubeNode = SCNNode()
+        cubeNode.position = SCNVector3(0, 0.1, -0.5) // in meters, so 0.1 = 10cm
+        cubeNode.geometry = cube
         
-        // Add to Scene
-        sceneView.scene.rootNode.addChildNode(node)
+        let sphereNode = SCNNode()
+        sphereNode.position = SCNVector3(0.1, 0, 0.5)
+        sphereNode.geometry = sphere
         
-        // Lighting
+        // Add to Scene with Lighting
+        sceneView.scene.rootNode.addChildNode(cubeNode)
         sceneView.autoenablesDefaultLighting = true
+        
+        
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        //let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
         // Set the scene to the view
-        sceneView.scene = scene
+        //sceneView.scene = scene
     }
     
     override func viewWillAppear(_ animated: Bool) {
