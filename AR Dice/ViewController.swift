@@ -57,7 +57,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         
-        // Plane Detection
+        // Horizontal Plane Detection
         configuration.planeDetection = .horizontal
 
         // Run the view's session
@@ -69,6 +69,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    // Detect Horizontal Plane
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
+        if anchor is ARPlaneAnchor {
+            print("Plane Detected!")
+        } else {
+            return
+        }
     }
 
 }
