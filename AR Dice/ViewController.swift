@@ -20,26 +20,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Shapes
-        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+        // Shapes and Materials
         let sphere = SCNSphere(radius: 0.2)
-        // Red
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.red
-        cube.materials = [material]
+        material.diffuse.contents = UIImage(named: "art.scnassets/8k_moon.jpg")
         sphere.materials = [material]
         
-        // Node; Position
-        let cubeNode = SCNNode()
-        cubeNode.position = SCNVector3(0, 0.1, -0.5) // in meters, so 0.1 = 10cm
-        cubeNode.geometry = cube
-        
+        // Position
         let sphereNode = SCNNode()
-        sphereNode.position = SCNVector3(0.1, 0, 0.5)
+        sphereNode.position = SCNVector3(0, 0.1, -0.5)
         sphereNode.geometry = sphere
         
         // Add to Scene with Lighting
-        sceneView.scene.rootNode.addChildNode(cubeNode)
+        sceneView.scene.rootNode.addChildNode(sphereNode)
         sceneView.autoenablesDefaultLighting = true
         
         
