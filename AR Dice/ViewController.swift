@@ -26,10 +26,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.red
         cube.materials = [material]
-        
+        // Node; Position
         let node = SCNNode()
         node.position = SCNVector3(0, 0.1, -0.5) // in meters, so 0.1 = 10cm
         node.geometry = cube
+        // Add to Scene
+        sceneView.scene.rootNode.addChildNode(node)
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
