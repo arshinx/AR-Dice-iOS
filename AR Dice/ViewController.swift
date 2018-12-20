@@ -32,7 +32,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sphereNode.geometry = sphere
         
         // Add to Scene with Lighting
-        sceneView.scene.rootNode.addChildNode(sphereNode)
+        //sceneView.scene.rootNode.addChildNode(sphereNode)
         sceneView.autoenablesDefaultLighting = true
         
         // Show statistics such as fps and timing information
