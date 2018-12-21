@@ -32,7 +32,7 @@
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <navigationItem key="navigationItem" title="AR Dice" id="cq1-S9-Ae7">
-                        <barButtonItem key="leftBarButtonItem" title="Clear" id="6LZ-rj-h9V">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="6LZ-rj-h9V">
                             <connections>
                                 <action selector="removeAllDice:" destination="BV1-FR-VrT" id="tAf-4r-4FC"/>
                             </connections>
