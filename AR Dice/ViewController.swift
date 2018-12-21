@@ -23,23 +23,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Shapes and Materials
-        let sphere = SCNSphere(radius: 0.2)
-        let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "art.scnassets/8k_moon.jpg")
-        sphere.materials = [material]
-        
-        // Position
-        let sphereNode = SCNNode()
-        sphereNode.position = SCNVector3(0, 0.1, -0.5)
-        sphereNode.geometry = sphere
-        
         // Add to Scene with Lighting
         //sceneView.scene.rootNode.addChildNode(sphereNode)
         sceneView.autoenablesDefaultLighting = true
-        
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
 
     }
     
