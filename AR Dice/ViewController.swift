@@ -65,12 +65,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 
                 addDice(atLocation: hitResult)
             }
-            
-            if !results.isEmpty {
-                print("Got a position: \(results.description)")
-            } else {
-                print("Touched somewhere else!")
-            }
         }
     }
     
