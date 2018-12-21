@@ -85,6 +85,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
             planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
             
+            // Grid Material
+            let gridMaterial = SCNMaterial()
+            gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
+            
             
             
         } else {
