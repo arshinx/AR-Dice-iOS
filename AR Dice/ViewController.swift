@@ -137,6 +137,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rollAll()
     }
     
+    // Shake Phone to roll dice
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        rollAll()
+    }
+    
     // Detect Horizontal Plane in real world
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
