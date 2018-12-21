@@ -76,7 +76,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // detect if touches were really detected
         if let touch = touches.first {
-            
+            // get first touch
+            let touchLocation = touch.location(in: sceneView)
+            // converts touch on screen to 3D world location
+            let results = sceneView.hitTest(touchLocation, types: .existingPlane)
         }
     }
     
