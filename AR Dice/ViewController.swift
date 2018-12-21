@@ -151,6 +151,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // Removes all Dice
     @IBAction func removeAllDice(_ sender: Any) {
         
+        if !diceArray.isEmpty {
+            
+            for dice in diceArray {
+                dice.removeFromParentNode()
+            }
+        }
     }
     
     // --- --- ----- --- ---
