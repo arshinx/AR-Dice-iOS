@@ -12,6 +12,9 @@ import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
+    // Properties
+    var diceArray = [SCNNode]()
+    
     @IBOutlet var sceneView: ARSCNView!
     
     override func viewDidLoad() {
@@ -88,9 +91,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         hitResult.worldTransform.columns.3.z
                     )
                     
-                    // Set the scene to the view
-                    sceneView.scene.rootNode.addChildNode(diceNode)
-                    
                     // Rotate Dice along x-axis
                     let randomX = Float(arc4random_uniform(4)) + 1 * (Float.pi/2)
                     let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
@@ -101,6 +101,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         z: CGFloat(randomZ * 5),
                         duration: 0.5)
                     )
+                    
+                    diceArray.append(diceNode)
+                    
+                    // Set the scene to the view
+                    sceneView.scene.rootNode.addChildNode(diceNode)
                 }
             }
             
