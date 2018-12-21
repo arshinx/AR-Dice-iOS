@@ -147,7 +147,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // --- --- ----- --- ---
-    // Mark: Plane Detection
+    // Mark: ARSceneViewDelegateMethods
     
     // Detect Horizontal Plane in real world
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
