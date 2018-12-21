@@ -31,7 +31,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cq1-S9-Ae7"/>
+                    <navigationItem key="navigationItem" id="cq1-S9-Ae7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gAu-Hj-bqW">
+                            <connections>
+                                <action selector="rollAgain:" destination="BV1-FR-VrT" id="srN-LQ-fUe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                     </connections>

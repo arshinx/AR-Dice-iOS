@@ -132,6 +132,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         )
     }
     
+    // Roll Again Button
+    @IBAction func rollAgain(_ sender: Any) {
+        
+    }
     
     // Detect Horizontal Plane in real world
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
