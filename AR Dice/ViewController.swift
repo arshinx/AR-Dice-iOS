@@ -154,8 +154,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         
-        let planeAnchor = anchor as! ARPlaneAnchor
-        
         let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
         
         // Create plane and turn it 90* to make it horizontal
