@@ -122,8 +122,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    // --- ----- ---
-    // Mark: Actions
+    // --- ---- ---- ---- ---
+    // Mark: Actions & Events
     
     // Roll Again Button
     @IBAction func rollAgain(_ sender: Any) {
