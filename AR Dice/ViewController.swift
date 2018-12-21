@@ -97,16 +97,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    // Dice Roll (all dice on scene)
-    func rollAll() {
-        
-        if !diceArray.isEmpty {
-            for dice in diceArray {
-                roll(dice: dice)
-            }
-        }
-    }
-    
+    // Roll Dice
     func roll(dice: SCNNode) {
         
         // Rotate Dice along x-axis
@@ -119,6 +110,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             z: CGFloat(randomZ * 5),
             duration: 0.5)
         )
+    }
+    
+    // Dice Roll (all dice on scene)
+    func rollAll() {
+        
+        if !diceArray.isEmpty {
+            for dice in diceArray {
+                roll(dice: dice)
+            }
+        }
     }
     
     // --- ----- ---
