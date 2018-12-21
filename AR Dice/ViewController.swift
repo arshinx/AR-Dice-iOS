@@ -80,12 +80,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let touchLocation = touch.location(in: sceneView)
             // converts touch on screen to 3D world location
             let results = sceneView.hitTest(touchLocation, types: .existingPlane)
+            
+            if !results.isEmpty {
+                print("Got a position: \(results.description)")
+            } else {
+                print("Touched somewhere else!")
+            }
         }
     }
     
     
     
-    // Detect Horizontal Plane
+    // Detect Horizontal Plane in real world
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
         if anchor is ARPlaneAnchor {
