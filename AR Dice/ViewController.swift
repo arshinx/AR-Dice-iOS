@@ -24,7 +24,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Add to Scene with Lighting
-        //sceneView.scene.rootNode.addChildNode(sphereNode)
         sceneView.autoenablesDefaultLighting = true
 
     }
@@ -64,26 +63,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             // Use Found Coordinate and Place Dice
             if let hitResult = results.first {
                 
-                // Create a new scene
-                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-                
-                // Create Dice Node for Pos.
-                if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-                    
-                    // Assign found position to dice
-                    diceNode.position = SCNVector3(
-                        hitResult.worldTransform.columns.3.x,
-                        hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
-                        hitResult.worldTransform.columns.3.z
-                    )
-                    
-                    roll(dice: diceNode)
-                    
-                    diceArray.append(diceNode)
-                    
-                    // Set the scene to the view
-                    sceneView.scene.rootNode.addChildNode(diceNode)
-                }
+                addDice(atLocation: hitResult)
             }
             
             if !results.isEmpty {
@@ -97,7 +77,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // --- ----- ---
     // Mark: Helpers
     
-    // Helper - Roll
+    // Add Dice
+    func addDice(atLocation location: ARHitTestResult) {
+        
+        // Create a new scene
+        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+        
+        // Create Dice Node for Pos.
+        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+            
+            // Assign found position to dice
+            diceNode.position = SCNVector3(
+                location.worldTransform.columns.3.x,
+                location.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+                location.worldTransform.columns.3.z
+            )
+            
+            diceArray.append(diceNode)
+            
+            // Set the scene to the view
+            sceneView.scene.rootNode.addChildNode(diceNode)
+            
+            // Roll Dice
+            roll(dice: diceNode)
+        }
+    }
+    
+    // Dice Roll (all dice on scene)
     func rollAll() {
         
         if !diceArray.isEmpty {
