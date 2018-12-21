@@ -123,7 +123,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // --- ---- ---- ---- ---
-    // Mark: Actions & Events
+    // Mark: - Actions & Events
     
     // Roll Again Button
     @IBAction func rollAgain(_ sender: Any) {
@@ -147,37 +147,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // --- --- ----- --- ---
-    // Mark: ARSceneViewDelegateMethods
+    // Mark: - ARSceneViewDelegateMethods
     
     // Detect Horizontal Plane in real world
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
-        if anchor is ARPlaneAnchor {
-            
-            let planeAnchor = anchor as! ARPlaneAnchor
-            
-            let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
-            
-            // Create plane and turn it 90* to make it horizontal
-            let planeNode = SCNNode()
-            planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
-            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
-            
-            // Grid Material
-            let gridMaterial = SCNMaterial()
-            gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
-            
-            // Assign Material
-            plane.materials = [gridMaterial]
-            planeNode.geometry = plane
-            
-            // Add to scene
-            node.addChildNode(planeNode)
-            
-            
-        } else {
-            return
-        }
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        
+        let planeAnchor = anchor as! ARPlaneAnchor
+        
+        let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+        
+        // Create plane and turn it 90* to make it horizontal
+        let planeNode = SCNNode()
+        planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
+        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+        
+        // Grid Material
+        let gridMaterial = SCNMaterial()
+        gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
+        
+        // Assign Material
+        plane.materials = [gridMaterial]
+        planeNode.geometry = plane
+        
+        // Add to scene
+        node.addChildNode(planeNode)
+
     }
 
 }
