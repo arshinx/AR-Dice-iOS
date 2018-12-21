@@ -154,7 +154,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         
-        createPlane(withPlaneAnchor: planeAnchor)
+        let planeNode = createPlane(withPlaneAnchor: planeAnchor)
         
         // Add to scene
         node.addChildNode(planeNode)
@@ -163,7 +163,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // Mark: - Plane Rendering Methods
     
-    func createPlane(withPlaneAnchor planeAnchor: ARPlaneAnchor) {
+    func createPlane(withPlaneAnchor planeAnchor: ARPlaneAnchor) -> SCNNode {
         let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
         
         // Create plane and turn it 90* to make it horizontal
@@ -178,6 +178,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Assign Material
         plane.materials = [gridMaterial]
         planeNode.geometry = plane
+        
+        return planeNode
     }
 
 }
