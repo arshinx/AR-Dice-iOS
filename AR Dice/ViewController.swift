@@ -108,6 +108,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    // --- ----- ---
+    // Mark: Helpers
+    
     // Helper - Roll
     func rollAll() {
         
@@ -132,6 +135,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         )
     }
     
+    // --- ----- ---
     // Mark: Actions
     
     // Roll Again Button
@@ -148,6 +152,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func removeAllDice(_ sender: Any) {
         
     }
+    
+    // --- --- ----- --- ---
+    // Mark: Plane Detection
     
     // Detect Horizontal Plane in real world
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
