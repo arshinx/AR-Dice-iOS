@@ -37,18 +37,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        
-        /*
-        // Create a new scene
-        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-        
-        // Create Dice Node for Pos.
-        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-            diceNode.position = SCNVector3(0, 0, 0)
-            // Set the scene to the view
-            sceneView.scene.rootNode.addChildNode(diceNode)
-        }
-         */
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,10 +65,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // detect if touches were really detected
         if let touch = touches.first {
+            
             // get first touch
             let touchLocation = touch.location(in: sceneView)
+            
             // converts touch on screen to 3D world location
             let results = sceneView.hitTest(touchLocation, types: .existingPlane)
+            
+            // Use Found Coordinate and Place Dice
+            if let hitResult = results.first {
+                
+                // Create a new scene
+                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+                
+                // Create Dice Node for Pos.
+                if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                    
+                    // Assign found position to dice
+                    diceNode.position = SCNVector3(
+                        hitResult.worldTransform.columns.3.x,
+                        hitResult.worldTransform.columns.3.y,
+                        hitResult.worldTransform.columns.3.z
+                    )
+                    
+                    // Set the scene to the view
+                    sceneView.scene.rootNode.addChildNode(diceNode)
+                }
+            }
             
             if !results.isEmpty {
                 print("Got a position: \(results.description)")
