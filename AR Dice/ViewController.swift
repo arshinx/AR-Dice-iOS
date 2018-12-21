@@ -91,16 +91,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         hitResult.worldTransform.columns.3.z
                     )
                     
-                    // Rotate Dice along x-axis
-                    let randomX = Float(arc4random_uniform(4)) + 1 * (Float.pi/2)
-                    let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
-                    
-                    diceNode.runAction(SCNAction.rotateBy(
-                        x: CGFloat(randomX * 5),
-                        y: 0,
-                        z: CGFloat(randomZ * 5),
-                        duration: 0.5)
-                    )
+                    roll(dice: diceNode)
                     
                     diceArray.append(diceNode)
                     
@@ -117,6 +108,29 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    // Helper - Roll
+    func rollAll() {
+        
+        if !diceArray.isEmpty {
+            for dice in diceArray {
+                roll(dice: dice)
+            }
+        }
+    }
+    
+    func roll(dice: SCNNode) {
+        
+        // Rotate Dice along x-axis
+        let randomX = Float(arc4random_uniform(4)) + 1 * (Float.pi/2)
+        let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+        
+        dice.runAction(SCNAction.rotateBy(
+            x: CGFloat(randomX * 5),
+            y: 0,
+            z: CGFloat(randomZ * 5),
+            duration: 0.5)
+        )
+    }
     
     
     // Detect Horizontal Plane in real world
