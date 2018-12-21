@@ -132,6 +132,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         )
     }
     
+    // Mark: Actions
+    
     // Roll Again Button
     @IBAction func rollAgain(_ sender: Any) {
         rollAll()
@@ -140,6 +142,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // Shake Phone to roll dice
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         rollAll()
+    }
+    
+    // Removes all Dice
+    @IBAction func removeAllDice(_ sender: Any) {
+        
     }
     
     // Detect Horizontal Plane in real world
