@@ -71,6 +71,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
+    // Receive User Touches and Convert to Real World Location
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        // detect if touches were really detected
+        if let touch = touches.first {
+            
+        }
+    }
+    
+    
+    
     // Detect Horizontal Plane
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
