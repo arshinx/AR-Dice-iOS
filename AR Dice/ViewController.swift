@@ -96,9 +96,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
                     
                     diceNode.runAction(SCNAction.rotateBy(
-                        x: CGFloat(randomX),
+                        x: CGFloat(randomX * 5),
                         y: 0,
-                        z: CGFloat(randomZ),
+                        z: CGFloat(randomZ * 5),
                         duration: 0.5)
                     )
                 }
