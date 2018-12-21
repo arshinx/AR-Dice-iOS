@@ -89,6 +89,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let gridMaterial = SCNMaterial()
             gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
             
+            // Assign Material
+            plane.materials = [gridMaterial]
+            planeNode.geometry = plane
+            
+            // Add to scene
+            node.addChildNode(planeNode)
             
             
         } else {
